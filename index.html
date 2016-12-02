@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="javascripts/highlight/styles/default.css" media="screen">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Htmlcss by alekskorovin</title>
+</head>
+
+<body>
+<header>
+    <div class="inner">
+        <h1>Директивы CSS. Основы Адаптивного дизайна/Responsive. Медиа и iframe. WordPress темы. Flexbox.</h1>
+        <a href="https://github.com/alekskorovin/html-css-practice-8/" class="button">
+            <small>открыть на</small>
+            GitHub</a>
+    </div>
+</header>
+
+<div id="content-wrapper">
+    <div class="inner clearfix">
+        <p id="main-content">
+            <h2>
+                <a id="cvs" class="anchor" href="#cvs" aria-hidden="true"><span aria-hidden="true"
+                                                                                          class="octicon octicon-link"></span>Директивы CSS.</a>
+            </h2>
+            <p>
+                Директивы (at rules) — это конструкции, которая позволяет создавать в CSS правила для изменения внешнего вида либо поведения элементов страницы. Директива начинается со знака <b>@</b>, за которым следует одно из служебных слов. Это общий синтаксис, которому следуют все директивы.
+            </p>
+            <p>
+                Директивы позволяют объединять CSS-правила и применять их к чему-то конкретному.
+                Они могут использоваться для:
+            </p>
+            <ul>
+                <li><b>загрузки нестандартных шрифтов</b>. &mdash; @font-face.</li>
+                <li><b>задания ключевых кадров</b> CSS3 анимации &mdash; @keyframes.</li>
+                <li><b>указания кодировки</b> используемой браузером &mdash; @charset.</li>
+                <li><b>импорта других таблиц стилей</b> для включения их в свой CSS-файл &mdash; @import.</li>
+                <li><b>задания специфических стилей</b> только конкретному устройству &mdash; @media.</li>
+            </ul>
+            <h3>Простые директивы</h3>
+            <p>
+                В основном используются для задания кодировки либо импорта других таблиц стилей &mdash; <b>@charset</b> и <b>@import</b>.
+            </p>
+            <blockquote>
+                <b>Синтаксис:</b>
+                <span class="accent">@ключевое_слово</span>
+                <span class="mark"> правило;</span>
+            </blockquote>
+            <h4>@charset</h4>
+            <p>
+                С помощью директивы <b>@charset</b> можно задать то же что делает мета-тег HTML <br /> <code class="html">&lt;meta charset="utf-8"&gt;</code>. Обычно указывается в самом верху CSS-файла.
+                <br />
+               Обратите внимание на то что  <b>HTML мета-тег главнее правила в CSS.</b>
+            </p>
+            <p>Так задаётся наиболее распространённая с 2008-го года кодировка <b>UTF-8</b>. <br/>UTF-8 включает в себя более двух миллионов символов: все возможные современные алфавиты, цифры, знаки препинания, математические и специальные символы, музыкальные знаки и символы вымерших форм письменности.</p>
+<pre><code class="css">@charset "UTF-8";</code></pre>
+            <h4>@import</h4>
+            <p>
+                Директива <b>@import</b> "вставляет" в строчку где она объявлена в CSS другую таблицу стилей, <br />путь к которой указан в скобках после <b>url</b>:
+            </p>
+<pre><code class="css">@import url(other.css);</code></pre>
+            <p data-height="467" data-theme-id="0" data-slug-hash="RoQWeZ" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="@import" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/RoQWeZ/">@import</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+            <blockquote>
+                Директиву <strong>@import</strong> размещают в самом верху CSS-файла.
+            </blockquote>
+            <blockquote>
+                <b>Особенность</b>
+                Использование @import приводит к дополнительному запросу на загрузку подключаемой таблицы стилей.
+            </blockquote>
+            <h3>Комплексные директивы</h3>
+            <p>Комплексные директивы содержат внутри себя CSS правила, которые могут применяться для указанных ситуаций.</p>
+            <blockquote>
+                <b>Синтаксис:</b>
+                <span class="accent">@ключевое_слово</span> {<br />
+                <span class="mark">&nbsp;&nbsp;&nbsp;&nbsp;вложенные_правила</span><br />
+                }
+            </blockquote>
+            <h4>@font-face</h4>
+            <p>
+                Эта директива позволяет загружать нестандартные шрифты.
+            </p>
+<pre><code class="css"><b>@font-face</b> {
+    font-family: 'MyWebFont';
+    src:  url('myfont.woff2') format('woff2'),
+    url('myfont.woff') format('woff');
+}</code></pre>
+
+            <blockquote>
+                Детальная информация &mdash; <a href="http://frontender.info/the-at-rules-of-css/">http://frontender.info/the-at-rules-of-css/ (Директивы CSS)</a>
+            </blockquote>
+
+
+            <div class="task">
+                <h3>Домашнее задание</h3>
+                <ol>
+                    <li></li>
+                </ol>
+            </div>
+
+        </section>
+
+        <aside id="sidebar">
+            <a href="https://github.com/alekskorovin/html-css-practice-8/archive/gh-pages.zip" class="button">
+                <small>Download</small>
+                .zip file
+            </a>
+
+        </aside>
+
+    </div>
+</div>
+
+<script src="javascripts/highlight/highlight.pack.js"></script>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="javascripts/main.js"></script>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+<script src="javascripts/jquery.js"></script>
+<script src="javascripts/jquery.scrollNav.min.js"></script>
+<script>
+    $('#content-wrapper').scrollNav({
+        sections: 'h2, h3, h4',
+        subSections: true,
+        sectionElem: 'div',
+        showHeadline: true,
+        headlineText: 'Перейти к'
+    });
+</script>
+</body>
+</html>
