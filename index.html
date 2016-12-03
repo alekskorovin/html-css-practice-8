@@ -19,7 +19,7 @@
 <body>
 <header>
     <div class="inner">
-        <h1>Директивы CSS. Основы Адаптивного дизайна/Responsive. Медиа и iframe. WordPress темы. Flexbox.</h1>
+        <h1>Директивы CSS. Основы Адаптивного дизайна/Responsive. WordPress темы.</h1>
         <a href="https://github.com/alekskorovin/html-css-practice-8/" class="button">
             <small>открыть на</small>
             GitHub</a>
@@ -30,7 +30,7 @@
     <div class="inner clearfix">
         <p id="main-content">
             <h2>
-                <a id="cvs" class="anchor" href="#cvs" aria-hidden="true"><span aria-hidden="true"
+                <a id="at-rules" class="anchor" href="#at-rules" aria-hidden="true"><span aria-hidden="true"
                                                                                           class="octicon octicon-link"></span>Директивы CSS.</a>
             </h2>
             <p>
@@ -94,16 +94,854 @@
     src:  url('myfont.woff2') format('woff2'),
     url('myfont.woff') format('woff');
 }</code></pre>
-
+            <h4>@keyframes</h4>
+            <p>
+                Эта директива служит для задания ключевых кадров CSS3 анимации.
+            </p>
+<pre><code class="css"><b>@keyframes</b> pulse {
+    0% {
+        background-color: blue;
+    }
+    100% {
+        background-color: green;
+    }
+}</code></pre>
+            <h4>@media</h4>
+            <p>
+                В этой директиве находятся условные выражения, применяющие определённые стили в зависимости от характеристик экрана либо для указанного устройства.
+            </p>
+            <p>
+                <b>@media</b> может быть использована для применения дополнительных стилей для печатающих устройств &mdash; принтера.
+            </p>
+            <p>
+                Эти стили будут добавлены к элементам страницы только при печати:
+            </p>
+<pre><code class="css"><b>@media print</b> {
+    .header, .footer {
+        display: none; /* Скрываем header/footer - они не нужны для печати */
+    }
+    .features-list li {
+        width: 100%; /* растягиваем на 100% элементы списка */
+    }
+}</code></pre>
+            <div class="task">
+                <h3>Задание #1.1</h3>
+                <ol>
+                    <li>Скачать и разархивировать <a href="mobi.zip">mobi.zip</a> или стянуть последнюю версию своего проекта.</li>
+                    <li>
+                        Открыть в браузере <b>index.html</b> и нажать <b>Ctrl P</b> чтобы открыть диалог предварительного просмотра версии страницы для печати.
+                        <br/>
+                        <img src="images/print-version.png" alt="Диалог версии для печати"/>
+                    </li>
+                    <li>
+                        Убедиться что header и footer присутствуют, а элементы списка features отображаются колонками.
+                    </li>
+                    <li>
+                        Открыть в редакторе кода <b>mobi/css/main.css</b> и добавить дополнительные стили для печати и сохранить файл:
+<pre><code class="css"><b>@media print</b> {
+    .header, .footer {
+        display: none; /* Скрываем header/footer - они не нужны для печати */
+    }
+    .features-list .features-img {
+        float: left; /* изображения смещаем влево */
+    }
+    .features-list li {
+        width: 100%; /* растягиваем на 100% элементы списка */
+    }
+    li {
+        page-break-inside: avoid; /* запрещаем разрыв страницы в элементах li */
+    }
+    .content-accordion {
+        width: 100%; /* растягиваем аккордион на всю ширину */
+    }
+    .accordion-body {
+        display: block; /* раскрываем элементы аккордиона */
+    }
+}</code></pre>
+                    </li>
+                    <li>
+                        Обновить в браузере страницу <b>index.html</b> и нажать <b>Ctrl P</b> чтобы снова отобразить диалог предварительного просмотра версии для печати.
+                        <br />
+                        <img src="images/print-version-update.png" alt="Изменения в отображении версии для печати"/>
+                    </li>
+                    <li>
+                        Убедиться что стили для печати изменились.
+                    </li>
+                </ol>
+            </div>
+            <blockquote>
+                <b>Особенность</b>
+                Всегда задавайте фоновый цвет там где это возможно.<br />
+                <strong>В версии для печати фоновые изображения не отображаются!</strong>
+            </blockquote>
+            <p>
+                Итак мы можем указывать тип устройства для которых работают стили. В предыдущем примере это были устройства типа <b>print</b>.
+            </p>
+            <p>
+                Распространённые типы устройств:
+            </p>
+            <ul>
+                <li><b>screen</b> &mdash; всевозможные экраны</li>
+                <li><b>print</b> &mdash; принтеры</li>
+                <li><b>projection</b> &mdash; проекторы</li>
+                <li><b>handheld</b> &mdash; носимые устройства</li>
+                <li><b>all</b> &mdash; устройства всех типов</li>
+            </ul>
             <blockquote>
                 Детальная информация &mdash; <a href="http://frontender.info/the-at-rules-of-css/">http://frontender.info/the-at-rules-of-css/ (Директивы CSS)</a>
             </blockquote>
+            <h4>Медиа выражения</h4>
+            <p>
+                Помимо типа устройства с помощью медиа выражений мы можем задавать стили для отдельных типов устройств а так же для различных размеров экрана:
+            </p>
+            <ul>
+                <li>Смартфонов Android, iOS либо других операционных систем.</li>
+                <li>Планшетов Android, iOS либо других операционных систем.</li>
+                <li>Указывать стили для определённых размеров экрана.</li>
+            </ul>
+            <p>
+                Используя медиа выражения (media queries) мы можем задавать разные стили для разной ширины экрана браузера.
+            </p>
+            <p>
+                Таким образом с помощью <b>медиа выражений</b> возможно задавать <b>разный дизайн при разных размера экрана</b>, при этом одна и та же страница может выглядеть совсем по другому для <b>мобильных телефонов, планшетов и разных размерах окна браузера</b>.
+            </p>
+            <p>Чтобы задать специфические стили для устройств экранов надо использовать медиа выражение:</p>
+<pre><code class="css">@media screen {
+    html {
+        font-size: 12px;
+    }
+    .header-menu {
+        display: block;
+    }
+}</code></pre>
+            <h4>CSS для размера видимой области в браузере</h4>
+            <p>
+                Предыдущий пример может быть расширен, мы можем указать не только тип устройства <b>screen</b> но и конкретный размер экрана:
+            </p>
+            <p data-height="485" data-theme-id="0" data-slug-hash="vydxqQ" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="@media screen max-width" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/vydxqQ/">@media screen max-width</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+            <p>Здесь мы задали синий фон и белый цвет текста только для видимой области экрана с шириной 640px и меньше.</p>
+            <p>Таким же образом можно задавать изменение дизайна при определённой ширине, например:</p>
+            <ul>
+                <li>Скрывать одни элементы и отображать другие.</li>
+                <li>Идущие один под другим блоки превращать в колонки.</li>
+                <li>Перекрашивать меню.</li>
+            </ul>
+            <p>
+                Можно использовать несколько <b>@media</b> директив идущих один за другим и указывать в них стили, которые будут включаться на указываемой ширине экрана.
+            </p>
+            <p data-height="475" data-theme-id="0" data-slug-hash="YpeVgz" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="@media screen max-width" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/YpeVgz/">@media screen max-width</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+            <p>
+                Можно указывать ориентацию мобильного устройства: портретную либо альбомную.
+            </p>
+<pre><code class="css"><b>@media screen and (orientation: landscape) {</b>
+    .header-menu {
+        float: right;
+    }
+}
+<b>@media screen and (orientation: portrait) {</b>
+    .header-menu {
+        float: none;
+    }
+}</code></pre>
+            <h4>Ширина и высота устройства</h4>
+            <p>Можно вычислять устройства используя в @media выражениях размеры экрана устройства:</p>
+            <ul>
+                <li><b>device-width</b> &mdash; ширина устройства</li>
+                <li><b>device-height</b> &mdash; высота устройства</li>
+                <li><b>min-device-width</b> &mdash; минимальная ширина устройства</li>
+                <li><b>max-device-width</b> &mdash; максимальная ширина устройства</li>
+                <li><b>min-device-height</b> &mdash; минимальная высота устройства</li>
+                <li><b>max-device-height</b> &mdash; максимальная высота устройства</li>
+            </ul>
+            <p>
+                Например стили работающие в iPhone в портретной и альбомной ориентации:
+            </p>
+<pre><code class="css">/* iPhone в портретной и альбомной ориентации */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2) {
 
+    .layout {
+        width: 100%;
+    }
+
+}</code></pre>
+            <h4>Пиксельное соотношение (pixel ratio)</h4>
+            <p>
+                Важно помнить что <b>пиксель в CSS</b> может отличаться от <b>физического пикселя</b>.
+                <br/>
+                Например в то время как физический размер экрана 750px, браузер может прменить CSS правила предполагая что это ширина 480px. В этом случае пиксельное соотношение 1.5:1 &mdash; в итоге один CSS пиксель равняется одному с половиной физическому пикселю.
+            </p>
+            <p>
+                У стандартного монитора физический пиксель совпадает с CSS-ным поэтому проблем с этим на обычных настольных компьютерах не возникает в отличии от мобильных устройств.
+            </p>
+            <p>На мобильных устройствах либо Retina-дисплеях настольных компьютеров 1 CSS пиксель может быть равен двум и более физическим пикселям.</p>
+            <p>
+                Поэтому для Retina-экранов подготавливаются изображения которые в 2 раза больше изображений для обычных экранов &mdash; в этом случае на Retina экранах изображение будет более чётким и резким потому что физические пиксели экрана будут совпадать с пикселями изображения (их тоже в 2 раза больше).
+            </p>
+            <p>
+                Применить стили к устройствам с определённым пиксельным соотношением например Retina-дисплеем можно так:
+            </p>
+<pre><code class="css"><b>@media (device-pixel-ratio: 2) {</b>
+    body {
+        background: url(twice-bigger-image.png);
+    }
+}</code></pre>
+            <p>
+                Для iPhone-ов используется свойство <b>-webkit-device-pixel-ratio</b> &mdash; из-за того что используется браузерный движок <b>webkit</b>.
+            </p>
+            <p>
+                Так же возможно применять стили исходя из разрешения экрана устройства:
+            </p>
+<pre><code class="css">@media screen and (resolution: 326dpi) { /* */ }</code></pre>
+<pre><code class="css">@media screen and (min-resolution: 96dpi) { /* */ }</code></pre>
+            <p>
+                Либо по соотношению сторон (aspect ratio) &mdash; отношение ширины к высоте:
+            </p>
+<pre><code class="css">@media screen and (device-aspect-ratio: 16/9) { /* */ }</code></pre>
+            <p>Презентация на тему экранов и пиксельного соотношения от Вадима Макеева &mdash; <a href="https://pepelsbey.net/pres/clear-and-sharp">https://pepelsbey.net/pres/clear-and-sharp</a>.</p>
+            <blockquote>
+                Большой список media queries для стандартных устройств &mdash;
+                <a href="https://css-tricks.com/snippets/css/media-queries-for-standard-devices/">https://css-tricks.com/snippets/css/media-queries-for-standard-devices/</a>
+            </blockquote>
+            <h3>Мета тег задающий параметры масштабирования</h3>
+            <p>
+                Если не задавать в HTML мета тег задающий правила масштабирования, мобильное устройство будет масштабировать (увеличиват либо уменьшать) сайт таким образом чтобы он максимально вписывался в окно устройства. При этом начисто исчезает возможность контролировать как именно будет выглядеть отмасштабированная страница.
+            </p>
+            <p>Для того чтобы избавиться от проблем с масштабирование используется мета тег который добавляется в элемент <b>head</b> с указанными параметрами:</p>
+<pre><code class="html">&lt;meta name="viewport" content="width=device-width,
+    initial-scale=1, maximum-scale=1,
+    user-scalable=no"&gt;</code></pre>
+            <ul>
+                <li><b>width=device-width</b> &mdash; задаёт ширину контента равной ширине экрана устройства.</li>
+                <li><b>initial-scale=1</b> &mdash; изначальный масштаб один к одному.</li>
+                <li><b>maximum-scale=1</b> &mdash; максимальный масштаб один к одному.</li>
+                <li><b>user-scale=no</b> &mdash; запрет на масштабирование пользователем страницы.</li>
+            </ul>
+            <p>
+                Подобный мета-тег но без запрета масштабирования пользователем установлен в фреймворке <a href="http://getbootstrap.com/">Bootstrap</a>.
+            </p>
+            <div class="task">
+                <h3>Задание #1.2</h3>
+                <ol>
+                    <li>
+                        Открыть в браузере <b>mobi/index.html</b>, открыть панель разработчика нажав <b>Ctrl Shift M</b>, выбрать <b>iPhone 6</b>  и обратить внимание как масштабируется страница в режиме эмуляции iPhone 6.
+                        <br/>
+                        <img src="images/scaled-website-1.png" alt="Масштаб страницы в iPhone 6"/>
+                        <br/>
+                        При этом проблема очевидна &mdash; устройство само отмасштабировало страницу и в таком масштабе все элементы дизайна будут крошечными.
+                    </li>
+                    <li>Открыть в редакторе кода <b>mobi/index.html</b> и добавить в начало элемента <b>head</b> мета-тег:
+<pre><code class="html">&lt;meta name="viewport" content="width=device-width,
+    initial-scale=1, maximum-scale=1,
+    user-scalable=no"&gt;</code></pre>
+                    </li>
+                    <li>
+                        Обновить страницу в браузере и убедиться что теперь проблема с масштабированием исчезла:
+                        <br/>
+                        <img src="images/scaled-website-2.png" alt="Исправление проблемы с авто-масштабированием"/>
+                    </li>
+                </ol>
+            </div>
+            <h2>
+                <a id="adaptive-responsive" class="anchor" href="#adaptive-responsive" aria-hidden="true"><span aria-hidden="true"
+                                                                                          class="octicon octicon-link"></span>Основы Адаптивного дизайна/Responsive.</a>
+            </h2>
+            <p>
+                <b>Адаптивный веб-дизайн</b> — дизайн веб-страниц, обеспечивающий правильное отображение сайта на различных устройствах и динамически подстраивающийся под заданные размеры окна браузера.
+            </p>
+            <p>
+                Всё началось 25-го мая 2010-го года с публикации в журнале <a href="http://alistapart.com/">AListApart</a> статьи Ethon-а Marcotte с названием <a href="http://alistapart.com/article/responsive-web-design">Responsive Web Design</a>.
+            </p>
+            <a href="http://alistapart.com/article/responsive-web-design"><img src="images/responsive-web-design-alist-apart.png" alt="Responsive Web Design"/></a>
+            <p>
+                Он впервые описал, показал и доказал перспективность этого подхода, дизайна и технологии.
+            </p>
+            <img src="images/Responsive-Web-Design.png" alt="Пример отзывчивого дизайна"/>
+            <p>
+                Основные идеи:
+            </p>
+            <ul>
+                <li>Для мобильных устройств и разных экранов необходим дизайн оптимально подходящий под конкретный размер.</li>
+                <li>Для реализации нескольких дизайнов в рамках одной страницы можно не менять HTML. Один сайт может работать на смартфоне, планшете, ноутбуке и телевизоре.</li>
+                <li>Для реализации адаптивного или отзывчивого дизайна можно использовать одну или несколько таблиц стилей, либо несколько CSS правил которые включаются/выключаются с помощью @media выражений.</li>
+            </ul>
+            <img src="images/responsive_webdesign.gif" alt="Responsive Webdesign?" />
+            <blockquote>
+                Детально о терминологии &mdash;
+                <a href="http://frontender.info/adaptive-vs-responsive-terminology/">Адаптивно-отзывчивый: разбираемся в терминологии</a>
+            </blockquote>
+            <p>
+                Основные стратегии реализации отзывчивого и адаптивных дизайнов:
+            </p>
+            <ul>
+                <li><b>desktop first</b> &mdash; вначале пишутся стили для настольных компьютеров, затем добавляются стили для мобильных устройств.</li>
+                <li><b>mobile first</b> &mdash; вначале пишутся стили для мобильных устройств, которые дополняются стилями для настольных компьютеров. <b>Это наиболее предпочтительный вариант</b>.</li>
+            </ul>
+
+            <h3>Свойство box-sizing</h3>
+            <p>
+                При реализации отзывчивого дизайна возникли проблемы с тем что при изменении ширины float-нутых элементов посредством @media выражений внутренний отступ приплюсовывался к процентному размеру.
+            </p>
+            <p data-height="328" data-theme-id="0" data-slug-hash="mOXMga" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="@media screen mobile first grid" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/mOXMga/">@media screen mobile first grid</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+            <p>
+                Спасение от проблем с внутренними отступами при процентной ширине пришло в виде<br /> <code>box-sizing: border-box</code>. После добавления этого свойства ширина и высота теперь считается вместе с внутренними отступами и рамкой.
+            </p>
+            <p>
+                Теперь адаптивная сетка со стратегией <b>mobile first</b> выглядит лучше:
+            </p>
+            <p data-height="365" data-theme-id="0" data-slug-hash="zoREOE" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="@media screen mobile first grid - box-sizing: border-box" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/zoREOE/">@media screen mobile first grid - box-sizing: border-box</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+            <p>
+                Альтернативный вариант с использованием функции <b>calc</b> выглядит более громоздко и все равно не решает проблемы когда задана рамка:
+            </p>
+            <p data-height="319" data-theme-id="0" data-slug-hash="ObQxPK" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="@media screen mobile first grid - calc" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/ObQxPK/">@media screen mobile first grid - calc</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+
+            <h3>Размерные единицы относительно viewport &mdash; vw, vh, vmin, vmax</h3>
+            <p>В процентах можно задавать ширину элементов и отступы, но невозможно задать размеры шрифта которые бы зависли от ширины или высоты видимой области браузера.</p>
+            <p>Для решения этой проблемы появились новые размерные единицы:</p>
+            <ul>
+                <li>
+                    <b>1vw</b> = 1% от ширины окна.
+                </li>
+                <li>
+                    <b>1vh</b> = 1% от высоты окна.
+                </li>
+                <li>
+                    <b>1vmin</b> = 1vw или 1vh &mdash; выбирается то, которое меньше.
+                </li>
+                <li>
+                    <b>1vmax</b> = 1vw или 1vh &mdash; выбирается то, которое больше.
+                </li>
+            </ul>
+            <p data-height="265" data-theme-id="0" data-slug-hash="zoREBp" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="fully responsive block" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/zoREBp/">fully responsive block</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+            <p>Поддержка единиц vw, vh, vmin, vmax &mdash; <a href="http://caniuse.com/#feat=viewport-units">http://caniuse.com/#feat=viewport-units</a>.</p>
+
+            <blockquote>
+                Типографика вписывающаяся в видимую область<br />
+                <a href="https://css-tricks.com/viewport-sized-typography/">https://css-tricks.com/viewport-sized-typography</a>
+            </blockquote>
+
+            <div class="task">
+                <h3>Задание #2.1</h3>
+                <ol>
+                    <li>
+                        Заказчик прислал макет мобильной версии домашней страницы
+                        <br />
+                        <img src="images/mobile-mobi.png" alt="Мобильная версия домашней страницы"/>
+                        <br/>
+                        Ознакомиться с дизайном.
+                    </li>
+                    <li>
+                        Скачать PSD-файл с мобильной версией дизайна <a href="mobi-home-mobile.psd">mobi-home-mobile.psd</a> и открыть его в Photoshop-е и ознакомиться с размерами элементов.
+                    </li>
+                </ol>
+            </div>
+            <p>
+                Мы выберем точку до которой будет использоваться мобильный дизайн это будет 640px &mdash; после этой ширины экрана будет использован дизайн для настольных компьютеров.
+            </p>
+            <h5>Добавление общих отступов</h5>
+            <p>
+                В макете общие отступы слева и справа по 16px, мы можем добавить их сразу для всех контейнеров для мобильной версии и обнулить для desktop-версии.
+            </p>
+        <div class="task">
+            <h3>Задание #2.2</h3>
+            <ol>
+                <li>
+                    Открыть в редакторе кода таблицу стилей <b>mobi/css/main.css</b>
+                    и обновить стили:
+<pre><code class="css">
+.header,
+.carousel-inner,
+.features-list,
+.footer,
+.content-inner,
+.contact-content,
+.contact-us-c  {
+    <b>padding-left: 16px;
+    padding-right: 16px;</b>
+    max-width: 967px;
+    margin: auto;
+}
+<b>
+@media and (min-width: 768px) {
+    .header,
+    .carousel-inner,
+    .features-list,
+    .footer,
+    .content-inner,
+    .contact-content,
+    .contact-us-c  {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}</b>
+</code></pre>
+                </li>
+                <li>
+                    Обновить страницу <b>mobi/index.html</b> в браузере и убедиться что отступы появились.
+                    <br/>
+                    <img src="images/mobile-mobi-1.png" alt="Отступы добавлены"/>
+                </li>
+            </ol>
+        </div>
+        <p>
+            Теперь можно обновить размер логотипа.
+        </p>
+        <div class="task">
+            <h3>Задание #2.3</h3>
+            <ol>
+                <li>
+                    Открыть в редакторе кода таблицу стилей <b>mobi/css/main.css</b>
+                    и обновить стили для логотипа:
+<pre><code class="css">
+.header-logo {
+    float: left;
+    width: 9.1rem;
+}
+.header-logo img {
+    height: auto;
+}
+@media screen and (min-width: 640px) {
+    .header-logo {
+        width: 15.5rem;
+        padding-left: 0.1rem;
+    }
+}
+</code></pre>
+                </li>
+                <li>
+                    Обновить страницу <b>mobi/index.html</b> в браузере и убедиться что логотип стал нужного размера.
+                    <br/>
+                    <img src="images/mobile-mobi-2.png" alt="Размер лого"/>
+                </li>
+            </ol>
+        </div>
+        <p>
+            Теперь мы можем изменить вид пунктов меню более подходящим под мобильную версию. Растянем пункты меню и подпункты на 100%.
+        </p>
+        <div class="task">
+            <h3>Задание #2.4</h3>
+            <ol>
+                <li>Открыть в редакторе кода таблицу стилей <b>mobi/css/main.css</b>
+                    и обновить стили для меню и подменю:
+<pre><code class="css">
+.header-menu a {
+    color: #6c6c6c;
+    font-size: 2rem;
+    line-height: 1;
+    text-decoration: none;
+    display: block;
+    padding: 2.5rem 0 1.7rem 0;
+}
+@media screen and (max-width: 640px) {
+    .header-menu .header-submenu {
+        width: 100%;
+        display: block;
+        position: static;
+    }
+    .header-menu li {
+        border-top: solid 1px #ccc;
+    }
+}
+@media screen and (min-width: 640px) {
+    .header-menu {
+        float: right;
+    }
+    .header-menu li {
+        margin-left: 4rem;
+        display: inline-block;
+    }
+    .header-menu a {
+        display: inline-block;
+    }
+}
+
+.header-menu li.active {
+    border-color: #5094f2;
+}
+</code></pre>
+                </li>
+                <li>
+                    Проверить отобразилось ли меню и подменю иначе чем в desktop версии.
+                </li>
+            </ol>
+        </div>
+        <p>
+            Теперь можно добавить кнопку которая будет показывать/скрывать меню.
+        </p>
+        <div class="task">
+            <h3>Задание #2.5</h3>
+            <ol>
+                <li>Скачать изображение кнопки <a href="menu-icon.png">menu-icon.png</a> и скопировать его в папку <b>mobi/img</b>.</li>
+                <li>Открыть <b>index.html</b> и вставить после <br />
+                    <code class="html">&lt;a class="header-logo" href="index.html"&gt;&lt;img src="img/logo.png" width="155" height="44" alt="Mobi" /&gt;&lt;/a&gt;</code>
+                    <br />
+                    код
+                    <br/>
+                    <code class="html">&lt;img class="mobile-menu-toggle" src="img/menu-icon.png" alt="" &gt;</code>
+                </li>
+                <li>
+                    Перед закрывающим тегом <b>body</b> добавить скрипт "оживляющий" переключение меню:
+                    <br/>
+<pre><code class="html">&lt;script&gt;
+    (function() {
+        document.querySelector('.mobile-menu-toggle')
+            .addEventListener('click', function() {
+                document.querySelector('.header-menu')
+                    .classList.toggle('active');
+                }
+            );
+    }());
+&lt;/script&gt;
+</code></pre>
+                    Этот скрипт при клике на изображение гамбургер-меню то добавляет то убирает класс "active" с меню <b>.header-menu</b>.
+                </li>
+                <li>
+                    Добавить стили для меню и его переключателя перед последним комментарием /* Header */
+                    <br />
+<pre><code class="css">.mobile-menu-toggle {
+    float: right;
+}
+@media (min-width: 640px) {
+    .mobile-menu-toggle {
+        display: none;
+    }
+    .header-menu {
+        clear: none;
+    }
+}
+@media (max-width: 640px) {
+    .header {
+        min-height: 4.5rem;
+        padding-top: 1.1rem;
+    }
+    .header-menu {
+        display: none;
+    }
+    .active.header-menu {
+        display: block;
+    }
+}
+* {
+    box-sizing: border-box;
+}
+</code></pre>
+                </li>
+                <li>
+                    Проверить в браузере изменения header-а.
+                </li>
+            </ol>
+        </div>
+        <p>
+            Теперь можно исправить размеры текста в карусели.
+        </p>
+        <div class="task">
+            <h3>Задание #2.6</h3>
+            <ol>
+                <li>
+                    Обновить правила для <b>.carousel-slides h3</b> и <b>.carousel-slides p</b>:
+<pre><code class="css">.carousel-slides h3 {
+    font-size: 1.5rem;
+}
+.carousel-slides p {
+    font-size: 1.1rem;
+    line-height: 1.73;
+}
+@media (min-width: 640px) {
+    .carousel-slides h3 {
+        font-size: 4.2rem;
+    }
+    .carousel-slides p {
+        font-size: 2.6rem;
+    }
+}</code></pre>
+                </li>
+                <li>
+                    Проверить в браузере изменения.
+                </li>
+            </ol>
+        </div>
+        <p>
+            Исправим отступ сверху в слайде.
+        </p>
+        <div class="task">
+            <h3>Задание #2.7</h3>
+            <ol>
+                <li>
+                    Обновить правила для <b>.carousel-inner</b>:
+<pre><code class="css">.carousel-inner {
+    padding: 1rem 0 0.6rem 0;
+    position: relative;
+}
+@media (min-width: 640px) {
+    .carousel-inner {
+        padding: 4rem 0 1rem 0;
+    }
+}
+</code></pre>
+                </li>
+                <li>
+                    Проверить изменения в браузере.
+                </li>
+            </ol>
+        </div>
+
+        <p>
+            Исправим отступ над текстом.
+        </p>
+        <div class="task">
+            <h3>Задание #2.8</h3>
+            <ol>
+                <li>
+                    Обновить правила для <b>.carousel-content</b>:
+<pre><code class="css">.carousel-content {
+    float: right;
+    width: 50%;
+}
+@media (min-width: 640px) {
+    .carousel-content {
+        margin-top: 10.4%;
+    }
+}
+</code></pre>
+                </li>
+                <li>
+                    Проверить изменения в браузере.
+                </li>
+            </ol>
+        </div>
+        <p>
+            Исправить часть стилей кнопки.
+        </p>
+        <div class="task">
+            <h3>Задание #2.9</h3>
+            <ol>
+                <li>
+                    Обновить правила для <b>.carousel-slides .carousel-button</b>:
+<pre><code class="css">.carousel-content {
+    float: right;
+    width: 50%;
+}
+@media (min-width: 640px) {
+    .carousel-content {
+        margin-top: 10.4%;
+    }
+}
+</code></pre>
+                </li>
+                <li>
+                    Проверить изменения в браузере.
+                </li>
+            </ol>
+        </div>
+        <p>
+            Наконец уберём "зубчики".
+        </p>
+        <div class="task">
+            <h3>Задание #2.10</h3>
+            <ol>
+                <li>
+                    Обновить правила для <b>.carousel</b>:
+<pre><code class="css">.carousel {
+    background: url(../img/carousel-background.jpg) no-repeat 0 0 fixed;
+    background-size: cover;
+    overflow: hidden;
+    max-height: 48.2rem;
+}
+@media (min-width: 640px) {
+    .carousel {
+        background: url(../img/battlement.png) repeat-x 0 100%, url(../img/carousel-background.jpg) no-repeat 0 0 fixed;
+        background-size: 12px 8px, cover;
+    }
+}
+</code></pre>
+                </li>
+                <li>
+                    Проверить изменения в браузере.
+                </li>
+            </ol>
+        </div>
+        <p>Исправим основные стил для блока <b>features</b>.</p>
+        <div class="task">
+            <h3>Задание #2.11</h3>
+            <ol>
+                <li>
+                    Обновить правила для <b>.carousel</b>:
+<pre><code class="css" style="max-height: 400px;">.features .features-list {
+    padding: 0;
+    max-width: 1072px;
+}
+.features-list li,
+.features-list li>* {
+    margin: 0;
+}
+.features-list li {
+    padding: 1.7rem 1.6rem 0.9rem 2.3rem;
+    border-bottom: solid 1px #cccccc;
+    list-style: none;
+    overflow: hidden;
+}
+.features-list .features-img {
+    width: 6.9rem;
+    height: 6.9rem;
+    margin-right: 1.3rem;
+    border-radius: 50%;
+    position: relative;
+    float: left;
+}
+.features-img [class^="icon-"] {
+    font-size: 3.6rem;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.features-list li:first-child .features-img {
+    background: #5094f2;
+}
+.features-list li:nth-child(2) .features-img {
+    background: #d94748;
+}
+.features-list li:last-child .features-img {
+    background: #ebbb11;
+}
+.features-list h3 {
+    color: #5094f2;
+    font-size: 1.7rem;
+    margin: 1.3rem 0 0 0;
+}
+.features-list p {
+    color: #666666;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    margin: 0;
+}
+@media (min-width: 640px) {
+    .features .features-list {
+        padding: 6.5rem 0 4.3rem;
+    }
+    .features-list li {
+        border: 0;
+        padding: 0;
+        text-align: center;
+        float: left;
+        width: 33.3%;
+    }
+    .features-list .features-img {
+        margin: auto;
+        width: 18.6rem;
+        height: 18.6rem;
+        float: none;
+    }
+    .features-img [class^="icon-"] {
+        font-size: 8.1rem;
+    }
+    .features-list h3 {
+        font-size: 2rem;
+        margin: 2.2rem 3rem 0 3rem;
+    }
+    .features-list p {
+        font-size: 1.5rem;
+        line-height: 1.74;
+        margin: 0 4rem 0 4rem;
+    }
+}
+</code></pre>
+                </li>
+                <li>Проверить изменения в браузере.</li>
+            </ol>
+        </div>
+        <p>После работы с @media queries, необходио тестировать страницу и в мобильном и полноэкранном разрешениях.</p>
+        <p>
+            При добавлении стилей для мобильного дизайна при стратегии <b>mobile first</b> (которую мы применяли во всех предыдущих примерах) выполняете следующие шаги:
+        </p>
+        <ol>
+            <li>
+                Копируете существующие стили которые будете переопределять для мобильного дизайна внутрь директивы которая всегда ставится после существующих стилей <b>@media (min-width: 640px) { ... }</b>
+            </li>
+            <li>
+                Возвращаетесь выше по коду &mdash; то что идёт до медиа выражения и делаете стили для мобильной версии.
+            </li>
+        </ol>
+            <h2>
+                <a id="wordpress" class="anchor" href="#wordpress" aria-hidden="true"><span aria-hidden="true"
+                                                                                                          class="octicon octicon-link"></span>WordPress темы.</a>
+            </h2>
+            <h3>
+                WordPress
+            </h3>
+            <p>На сегодняшний день WordPress является самой популярной бесплатной CMS (Content Management System).</p>
+            <p>Официальное определение &mdash; WordPress - это мощная платформа для персонального блоггинга. Она содержит отличный набор возможностей для того, чтобы максимально упростить процесс создания онлайн-публикаций, сделать его приятным и удобным. Мы с гордостью представляем вам свободно распространяемую, соответствующую стандартам, быструю, легкую и бесплатную платформу для персонального блоггинга с практичными настройками и свойствами по умолчанию и с чрезвычайно гибким и настраиваемым ядром. (<a href="https://codex.wordpress.org/%D0%9E%D1%81%D0%BE%D0%B1%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8_WordPress">Особенности WordPress</a>).</p>
+            <p>На базе этой CMS системы очень просто создавать небольшие динамические сайты.</p>
+            <p>
+                В WordPress по умолчанию идёт поддержка:
+            </p>
+            <ul>
+                <li>Контентных страниц</li>
+                <li>Блога с возможностью создания категорий, подкатегорий и т.д.</li>
+                <li>Поиска по сайту.</li>
+                <li>Плагинов &mdash; отдельных модулей отвечающих за расширение функциональности сайат (их существует огромное количество &mdash; <a href="https://wordpress.org/plugins/">https://wordpress.org/plugins/</a>)</li>
+                <li>Тем &mdash; набора файлов при замене которых полностью меняется внешний вид сайта &mdash; <a href="https://wordpress.org/themes/">https://wordpress.org/themes/</a>.</li>
+            </ul>
+            <div class="task">
+                <h3>Задание #3.1</h3>
+                <ol>
+                    <li>Зайти на страницу выбора WordPress тем &mdash; <a href="https://wordpress.org/themes/browse/popular/">https://wordpress.org/themes/browse/popular/</a></li>
+                    <li>Скачать и разархивировать архив с понравившейся темой нажав на кнопку <b>Download</b>
+                        <br/>
+                        <img src="images/wordpress-1.png" alt="Скачать тему"/>
+                    </li>
+                    <li>
+                        Открыть папку с темой, найти файл <b>style.css</b> и открыть его в редакторе кода
+                        <br/>
+                        <img src="images/wordpress-theme-styles.png" alt="Стили WordPress темы"/>
+                    </li>
+                    <li>
+                        Поменять название темы на любое другое название и сохранить файл.
+                        <br/>
+                        <img src="images/wordpress-theme-styles-2.png" alt="Название темы"/>
+                    </li>
+                    <li>
+                        Открыть файл <b>screenshot.png</b> и посмотреть на изображение того как выглядит тема.
+                        <br/>
+                        <img src="images/wordpress-theme-screenshot.png" alt="Скриншот с изображеним темы"/>
+                    </li>
+                    <li>
+                        Попробовать изменить какие-либо стили в <b>styles.css</b>.
+                    </li>
+                    <li>
+                        Открыть файл <b>header.php</b>
+                        <br/>
+                        <img src="images/wordpress-theme-header.png" alt="Файл header.php"/>
+                    </li>
+                    <li>
+                        И после открывающего тега <b>body</b> добавить код:
+                        <br />
+                        <code class="html">&lt;div&gt;Блок который отобразится на всех страницах&lt;/div&gt;</code>
+                    </li>
+                    <li>Поменять название папки с темой на новое, заархивировать и отправить в Slack.</li>
+                </ol>
+            </div>
 
             <div class="task">
                 <h3>Домашнее задание</h3>
                 <ol>
-                    <li></li>
+                    <li>
+                        Исправить размеры значка в кнопке <b>Sign up now</b> в карусели для мобильного дизайна.
+                    </li>
+                    <li>
+                        Исправить дизайн блока <b>content</b> в соответствии с мобильным дизайном в PSD.
+                    </li>
+                    <li>
+                        Исправить дизайн блока <b>footer</b> в соответствии с мобильным дизайном в PSD.
+                    </li>
+                    <li>Для всех HTML страниц проекта добавить мета тег:
+<pre><code class="html">&lt;meta name="viewport" content="width=device-width,
+    initial-scale=1, maximum-scale=1,
+    user-scalable=no"&gt;</code></pre>
+                    </li>
                 </ol>
             </div>
 
