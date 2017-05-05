@@ -34,7 +34,7 @@
                                                                                           class="octicon octicon-link"></span>Директивы CSS.</a>
             </h2>
             <p>
-                Директивы (at rules) — это конструкции, которая позволяет создавать в CSS правила для изменения внешнего вида либо поведения элементов страницы. Директива начинается со знака <b>@</b>, за которым следует одно из служебных слов. Это общий синтаксис, которому следуют все директивы.
+                Директивы (at rules) — это конструкции, которые позволяют создавать в CSS правила для изменения внешнего вида либо поведения элементов страницы. Директива начинается со знака <b>@</b>, за которым следует одно из служебных слов. Это общий синтаксис, которому следуют все директивы.
             </p>
             <p>
                 Директивы позволяют объединять CSS-правила и применять их к чему-то конкретному.
@@ -127,14 +127,14 @@
             <div class="task">
                 <h3>Задание #1.1</h3>
                 <ol>
-                    <li>Скачать и разархивировать <a href="mobi.zip">mobi.zip</a> или стянуть последнюю версию своего проекта.</li>
+                    <li>Скачать и разархивировать <a href="mobi.zip">mobi.zip</a> или взять из репозитория на GitHub последнюю версию своего проекта.</li>
                     <li>
                         Открыть в браузере <b>index.html</b> и нажать <b>Ctrl P</b> чтобы открыть диалог предварительного просмотра версии страницы для печати.
                         <br/>
                         <img src="images/print-version.png" alt="Диалог версии для печати"/>
                     </li>
                     <li>
-                        Убедиться что header и footer присутствуют, а элементы списка features отображаются колонками.
+                        Убедиться что <b>header</b> и <b>footer</b> присутствуют, а элементы списка <b>features</b> отображаются колонками.
                     </li>
                     <li>
                         Открыть в редакторе кода <b>mobi/css/main.css</b> и добавить дополнительные стили для печати и сохранить файл:
@@ -188,7 +188,12 @@
                 <li><b>all</b> &mdash; устройства всех типов</li>
             </ul>
             <blockquote>
-                Детальная информация &mdash; <a href="http://frontender.info/the-at-rules-of-css/">http://frontender.info/the-at-rules-of-css/ (Директивы CSS)</a>
+                Детальная информация &mdash;<br />
+                <a href="http://frontender.info/the-at-rules-of-css/"><del>http://frontender.info/the-at-rules-of-css/ (Директивы CSS)</del></a>
+                <br />
+                <a href="https://css-tricks.com/the-at-rules-of-css/">https://css-tricks.com/the-at-rules-of-css/ (The At-Rules of CSS)</a>
+                <br />
+                <a href="https://developer.mozilla.org/en/docs/Web/CSS/At-rule">https://developer.mozilla.org/en/docs/Web/CSS/At-rule (At-rule)</a>
             </blockquote>
             <h4>Медиа выражения</h4>
             <p>
@@ -227,7 +232,7 @@
                 <li>Перекрашивать меню.</li>
             </ul>
             <p>
-                Можно использовать несколько <b>@media</b> директив идущих один за другим и указывать в них стили, которые будут включаться на указываемой ширине экрана.
+                Можно использовать несколько <b>@media</b> директив идущих одна за другой и указывать в них стили, которые будут включаться на указываемой ширине экрана.
             </p>
             <p data-height="475" data-theme-id="0" data-slug-hash="YpeVgz" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="@media screen max-width" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/YpeVgz/">@media screen max-width</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
             <p>
@@ -244,7 +249,7 @@
     }
 }</code></pre>
             <h4>Ширина и высота устройства</h4>
-            <p>Можно вычислять устройства используя в @media выражениях размеры экрана устройства:</p>
+            <p>Можно вычислять устройства используя в <b>@media выражениях</b> размеры экрана устройства:</p>
             <ul>
                 <li><b>device-width</b> &mdash; ширина устройства</li>
                 <li><b>device-height</b> &mdash; высота устройства</li>
@@ -302,7 +307,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 <pre><code class="css">@media screen and (device-aspect-ratio: 16/9) { /* */ }</code></pre>
             <p>Презентация на тему экранов и пиксельного соотношения от Вадима Макеева &mdash; <a href="https://pepelsbey.net/pres/clear-and-sharp">https://pepelsbey.net/pres/clear-and-sharp</a>.</p>
             <blockquote>
-                Большой список media queries для стандартных устройств &mdash;
+                Большой список <strong>media queries</strong> для стандартных устройств &mdash;<br />
                 <a href="https://css-tricks.com/snippets/css/media-queries-for-standard-devices/">https://css-tricks.com/snippets/css/media-queries-for-standard-devices/</a>
             </blockquote>
             <h3>Мета тег задающий параметры масштабирования</h3>
@@ -310,8 +315,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
                 Если не задавать в HTML мета тег задающий правила масштабирования, мобильное устройство будет масштабировать (увеличиват либо уменьшать) сайт таким образом чтобы он максимально вписывался в окно устройства. При этом начисто исчезает возможность контролировать как именно будет выглядеть отмасштабированная страница.
             </p>
             <p>Для того чтобы избавиться от проблем с масштабирование используется мета тег который добавляется в элемент <b>head</b> с указанными параметрами:</p>
-<pre><code class="html">&lt;meta name="viewport" content="width=device-width,
-    initial-scale=1, maximum-scale=1,
+<pre><code class="html">&lt;meta name="viewport"
+    content="width=device-width,
+    initial-scale=1,
+    maximum-scale=1,
     user-scalable=no"&gt;</code></pre>
             <ul>
                 <li><b>width=device-width</b> &mdash; задаёт ширину контента равной ширине экрана устройства.</li>
@@ -320,7 +327,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
                 <li><b>user-scale=no</b> &mdash; запрет на масштабирование пользователем страницы.</li>
             </ul>
             <p>
-                Подобный мета-тег но без запрета масштабирования пользователем установлен в фреймворке <a href="http://getbootstrap.com/">Bootstrap</a>.
+                Подобный мета-тег но без запрета масштабирования пользователем и без заданного максимального масштаба, установлен во фреймворке <a href="http://getbootstrap.com/">Bootstrap</a>.
             </p>
             <div class="task">
                 <h3>Задание #1.2</h3>
@@ -346,13 +353,13 @@ and (-webkit-min-device-pixel-ratio: 2) {
             </div>
             <h2>
                 <a id="adaptive-responsive" class="anchor" href="#adaptive-responsive" aria-hidden="true"><span aria-hidden="true"
-                                                                                          class="octicon octicon-link"></span>Основы Адаптивного дизайна/Responsive.</a>
+                                                                                          class="octicon octicon-link"></span>Основы Adaptive (Адаптивного) / Responsive (отзывчивого) дизайна.</a>
             </h2>
             <p>
                 <b>Адаптивный веб-дизайн</b> — дизайн веб-страниц, обеспечивающий правильное отображение сайта на различных устройствах и динамически подстраивающийся под заданные размеры окна браузера.
             </p>
             <p>
-                Всё началось 25-го мая 2010-го года с публикации в журнале <a href="http://alistapart.com/">AListApart</a> статьи Ethon-а Marcotte с названием <a href="http://alistapart.com/article/responsive-web-design">Responsive Web Design</a>.
+                Всё началось 25-го мая 2010-го года с публикации в журнале <a href="http://alistapart.com/">AListApart</a> статьи Ethon-а Marcotte с названием <a href="http://alistapart.com/article/responsive-web-design">Responsive Web Design</a> (Отзывчивый веб дизайн).
             </p>
             <a href="http://alistapart.com/article/responsive-web-design"><img src="images/responsive-web-design-alist-apart.png" alt="Responsive Web Design"/></a>
             <p>
@@ -369,8 +376,11 @@ and (-webkit-min-device-pixel-ratio: 2) {
             </ul>
             <img src="images/responsive_webdesign.gif" alt="Responsive Webdesign?" />
             <blockquote>
-                Детально о терминологии &mdash;
-                <a href="http://frontender.info/adaptive-vs-responsive-terminology/">Адаптивно-отзывчивый: разбираемся в терминологии</a>
+                Детально о терминологии &mdash;<br />
+                <a href="http://frontender.info/adaptive-vs-responsive-terminology/"><del>Адаптивно-отзывчивый: разбираемся в терминологии</del></a>
+                <br />
+                <a href="https://habrahabr.ru/post/148224/">https://habrahabr.ru/post/148224/ (Адаптивный веб-дизайн vs. Отзывчивый веб-дизайн, в чем разница?)</a>
+
             </blockquote>
             <p>
                 Основные стратегии реализации отзывчивого и адаптивных дизайнов:
@@ -382,18 +392,18 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
             <h3>Свойство box-sizing</h3>
             <p>
-                При реализации отзывчивого дизайна возникли проблемы с тем что при изменении ширины float-нутых элементов посредством @media выражений внутренний отступ приплюсовывался к процентному размеру.
+                При реализации отзывчивого дизайна возникли проблемы с тем что при изменении ширины float-нутых элементов посредством <b>@media выражений</b> внутренний отступ приплюсовывался к процентному размеру.
             </p>
             <p data-height="328" data-theme-id="0" data-slug-hash="mOXMga" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="@media screen mobile first grid" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/mOXMga/">@media screen mobile first grid</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
             <p>
-                Спасение от проблем с внутренними отступами при процентной ширине пришло в виде<br /> <code>box-sizing: border-box</code>. После добавления этого свойства ширина и высота теперь считается вместе с внутренними отступами и рамкой.
+                Спасение от проблем с внутренними отступами при процентной ширине пришло в виде<br /> <code>box-sizing: border-box</code>. После добавления свойства <b>box-sizing</b> со значением <b>border-box</b>  ширина и высота теперь считается вместе с внутренними отступами и рамкой.
             </p>
             <p>
                 Теперь адаптивная сетка со стратегией <b>mobile first</b> выглядит лучше:
             </p>
             <p data-height="365" data-theme-id="0" data-slug-hash="zoREOE" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="@media screen mobile first grid - box-sizing: border-box" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/zoREOE/">@media screen mobile first grid - box-sizing: border-box</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
             <p>
-                Альтернативный вариант с использованием функции <b>calc</b> выглядит более громоздко и все равно не решает проблемы когда задана рамка:
+                Альтернативный вариант с использованием функции <b>calc</b> для задания размера рассчитываемого из процентного и пиксельного либо заданного в rem-ах значения выглядит более громоздко и все равно не решает проблемы когда задана рамка:
             </p>
             <p data-height="319" data-theme-id="0" data-slug-hash="ObQxPK" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="@media screen mobile first grid - calc" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/ObQxPK/">@media screen mobile first grid - calc</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
@@ -414,7 +424,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
                     <b>1vmax</b> = 1vw или 1vh &mdash; выбирается то, которое больше.
                 </li>
             </ul>
-            <p data-height="265" data-theme-id="0" data-slug-hash="zoREBp" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="fully responsive block" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/zoREBp/">fully responsive block</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+            <p data-height="365" data-theme-id="0" data-slug-hash="zoREBp" data-default-tab="css,result" data-user="alekskorovin" data-embed-version="2" data-pen-title="fully responsive block" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/alekskorovin/pen/zoREBp/">fully responsive block</a> by Aleksey Korovin (<a href="http://codepen.io/alekskorovin">@alekskorovin</a>) on <a href="http://codepen.io">CodePen</a>.</p>
             <p>Поддержка единиц vw, vh, vmin, vmax &mdash; <a href="http://caniuse.com/#feat=viewport-units">http://caniuse.com/#feat=viewport-units</a>.</p>
 
             <blockquote>
@@ -598,7 +608,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
                     Этот скрипт при клике на изображение гамбургер-меню то добавляет то убирает класс "active" с меню <b>.header-menu</b>.
                 </li>
                 <li>
-                    Добавить стили для меню и его переключателя перед последним комментарием /* Header */
+                    Добавить стили для меню и его переключателя перед последним комментарием<br />
+                    <b>/* Header */</b>
                     <br />
 <pre><code class="css">.mobile-menu-toggle {
     float: right;
@@ -762,7 +773,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
                 </li>
             </ol>
         </div>
-        <p>Исправим основные стил для блока <b>features</b>.</p>
+        <p>Исправим основные стили для блока <b>features</b>.</p>
         <div class="task">
             <h3>Задание #2.11</h3>
             <ol>
@@ -853,7 +864,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
                 <li>Проверить изменения в браузере.</li>
             </ol>
         </div>
-        <p>После работы с @media queries, необходио тестировать страницу и в мобильном и полноэкранном разрешениях.</p>
+        <p>После работы с <b>@media queries</b>, необходио тестировать страницу и в мобильном и полноэкранном разрешениях.</p>
         <p>
             При добавлении стилей для мобильного дизайна при стратегии <b>mobile first</b> (которую мы применяли во всех предыдущих примерах) выполняете следующие шаги:
         </p>
@@ -941,6 +952,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
 <pre><code class="html">&lt;meta name="viewport" content="width=device-width,
     initial-scale=1, maximum-scale=1,
     user-scalable=no"&gt;</code></pre>
+                    </li>
+                    <li>
+                        Скинуть ссылку на репозиторий проекта в GitHub-е.
                     </li>
                 </ol>
             </div>
